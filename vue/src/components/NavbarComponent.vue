@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <nav>
+    <nav class="navbar">
         <router-link :to="{ name: 'home' }" class="branding">
             <h1>Aaqil</h1>
         </router-link>

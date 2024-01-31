@@ -26,6 +26,21 @@ const router = createRouter({
             path: '/contact',
             name: 'contact',
             component: () => import('../views/ContactView.vue')
+        },
+        {
+            path: '/admin/dashboard',
+            name: 'admin_dashboard',
+            component: () => import('../views/admin/AdminDashboard.vue')
+        },
+        {
+            path: '/admin/categories',
+            name: 'admin_categories',
+            component: () => import('../views/admin/products/categories/CategoriesIndex.vue')
+        },
+        {
+            path: '/admin/products',
+            name: 'admin_products',
+            component: () => import('../views/admin/products/products/ProductsIndex.vue')
         }
     ]
 })

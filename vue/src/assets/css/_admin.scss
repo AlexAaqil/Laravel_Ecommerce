@@ -1,0 +1,9 @@
+.Admin {
+    .sidenav {
+        width: $sidenav_width;
+    }
+
+    .main_content {
+        margin-left: calc($sidenav_width + 1%);
+    }
+}
