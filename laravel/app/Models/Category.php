@@ -15,15 +15,6 @@ class Category extends Model
         'slug',
     ];
 
-    public function getRouteKeyName()
-    {
-        if (request()->route()->named('categories.show')) {
-            return 'slug';
-        }
-
-        return 'id';
-    }
-
     public static function boot()
     {
         parent::boot();
