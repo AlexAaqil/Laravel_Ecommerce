@@ -1,0 +1,93 @@
+.products_wrapper {
+    @include responsive_grid(4);
+    gap: 1em;
+
+    .product {
+        box-shadow: 1px 1px 8px #c4c4c4;
+        .image {
+            height: 250px;
+
+            img {
+                @include fit_image(cover);
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .text {
+            padding: 0.5em;
+
+            .extra_details {
+                display: flex;
+                gap: 0.5em;
+
+                span {
+                    border: 1px solid grey;
+                    border-radius: 32px;
+                    padding: 0 0.8em;
+                    font-size: 0.75em;
+                }
+            }
+
+            .details {
+                display: grid;
+                grid-template-columns: 80% auto;
+                align-items: center;
+                margin: 1em 0;
+
+                .product_info {
+                    display: grid;
+                    gap: 1em;
+
+                    .title,
+                    .price {
+                        font-weight: bold;
+                        letter-spacing: 0.5px;
+                    }
+
+                    .title {
+                        font-size: 1.4em;
+                        height: 30px;
+                    }
+
+                    .price {
+                        color: $price_color;
+                        font-size: 1.2em;
+                    }
+                }
+
+                .cart {
+                    button {
+                        background: none;
+                        border: none;
+                        
+                        i {
+                            font-size: 3em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (width >= 726px) {
+    .products_wrapper {
+        .product {
+            .text {
+                .details {
+                    .product_info {
+                        .title,
+                        .price {
+                            font-size: 1.1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

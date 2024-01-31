@@ -1,0 +1,32 @@
+footer {
+    background: #000;
+    color: #fff;
+
+    a {
+        @include link_color(#fff);
+    }
+
+    .container {
+        @include responsive_grid(3);
+        gap: 1em;
+
+        .branding {
+            h1 {
+                font-size: max(1.2em, 2vw);
+                margin: 0 0 0.3em;
+            }
+        }
+
+        .links,
+        .contacts {
+            h1 {
+                font-size: max(1.2em, 1.3vw);
+            }
+        }
+
+        .links {
+            display: grid;
+            gap: 0.3em;
+        }
+    }
+}

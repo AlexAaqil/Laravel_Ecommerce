@@ -1,0 +1,29 @@
+nav {
+    height: 8vh;
+    background: transparent;
+    backdrop-filter: blur(6px);
+    padding: 0.5em $sides_padding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+
+    a {
+        text-decoration: none;
+        color: #000000;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .branding {
+        h1 {
+            font-size: 1.2em;
+        }
+    }
+
+    .nav_links {
+        display: flex;
+        gap: 1em;
+    }
+}

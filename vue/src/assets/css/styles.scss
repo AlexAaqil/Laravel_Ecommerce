@@ -1,0 +1,13 @@
+@import "variables";
+@import "mixins";
+@import "global";
+
+
+// Partials
+@import "navbar";
+@import "footer";
+@import "product";
+
+// Pages
+@import "homepage";
+@import "shoppage";
