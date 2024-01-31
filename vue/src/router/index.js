@@ -38,6 +38,17 @@ const router = createRouter({
             component: () => import('../views/admin/products/categories/CategoriesIndex.vue')
         },
         {
+            path: '/admin/categories/store',
+            name: 'new_category',
+            component: () => import('../views/admin/products/categories/AddCategory.vue')
+        },
+        {
+            path: '/admin/categories/:id/update',
+            name: 'update_category',
+            component: () => import('../views/admin/products/categories/UpdateCategory.vue'),
+            props: true
+        },
+        {
             path: '/admin/products',
             name: 'admin_products',
             component: () => import('../views/admin/products/products/ProductsIndex.vue')
