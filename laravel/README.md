@@ -1,11 +1,13 @@
 # Laravel Ecommerce
 
 ## Stack
-- Laravel -backend
-- Vue - frontend
-- MySQL - database
+
+-   Laravel -backend
+-   Vue - frontend
+-   MySQL - database
 
 ## Installation
+
 1. Clone the repository:
     ```bash
     git clone <repository_url>
@@ -22,3 +24,5 @@
     ```bash
     cp .env.example .env
     ```
+
+42:05
