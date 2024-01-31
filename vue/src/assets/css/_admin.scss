@@ -5,6 +5,73 @@
 
     .main_content {
         margin-left: calc($sidenav_width + 1%);
+        padding: 0 1em;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h1 {
+                font-size: 1.2em;
+            }
+
+            a {
+                text-decoration: none;
+                background: #000;
+                color: #fff;
+                padding: 0.25em 1em;
+                border-radius: 4px;
+                font-weight: bold;
+
+                &:hover {
+                    background: #134d01;
+                }
+            }
+        }
+
+        .body {
+            ul {
+                list-style: none;
+                margin: 0.5em 0;
+
+                li {
+                    $li_border: 1px solid rgb(221, 221, 221);
+                    display: grid;
+                    gap: 1em;
+                    border-bottom: $li_border;
+                    padding: 0.4em 0.3em;
+
+                    &:first-of-type {
+                        border-top: $li_border;
+                    }
+
+                    .actions {
+                        span {
+                            &:not(:last-of-type) {
+                                margin: 0 1em 0 0;
+                            }
+                        }
+
+                        .edit {
+                            color: green;
+                        }
+
+                        .delete {
+                            color: red;
+                        }
+                    }
+                }
+
+                .categories {
+                    grid-template-columns: repeat(2, 1fr);
+
+                    .actions {
+                        text-align: right;
+                    }
+                }
+            }
+        }
 
         .related_pages_navbar {
             display: flex;
@@ -17,7 +84,7 @@
                 font-weight: bold;
 
                 &:not(:last-of-type)::after {
-                    content: "/";
+                    content: '/';
                     margin-left: 1em;
                 }
             }
