@@ -5,5 +5,22 @@
 
     .main_content {
         margin-left: calc($sidenav_width + 1%);
+
+        .related_pages_navbar {
+            display: flex;
+            gap: 1em;
+            padding: 0.5em 0;
+
+            a {
+                text-decoration: none;
+                color: #0627b8;
+                font-weight: bold;
+
+                &:not(:last-of-type)::after {
+                    content: "/";
+                    margin-left: 1em;
+                }
+            }
+        }
     }
 }
