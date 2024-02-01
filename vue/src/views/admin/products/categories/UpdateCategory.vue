@@ -26,7 +26,7 @@ onMounted(() => getCategory(props.id))
                     <div class="input_group">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" v-model="category.title" />
-                        <span v-if="errors && errors.title" class="inline_alert">{{ errors.title }}</span>
+                        <span v-if="errors?.title" class="inline_alert">{{ errors.title[0] }}</span>
                     </div>
 
                     <button type="submit">Update</button>
