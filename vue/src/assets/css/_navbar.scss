@@ -25,5 +25,18 @@
     .nav_links {
         display: flex;
         gap: 1em;
+
+        .nav_authentication {
+            a {
+                background: #000;
+                color: #fff;
+                padding: 6px 16px;
+                border-radius: 16px;
+            }
+
+            .logout {
+                background: rgb(216, 0, 0);
+            }
+        }
     }
 }

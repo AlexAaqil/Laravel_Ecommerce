@@ -1,0 +1,28 @@
+.Authentication {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin: 0 0 0.5em;
+        text-align: center;
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+
+    p {
+        margin: 0.5em 0;
+    }
+}
+
+@media screen and (width >= 726px) {
+    .Authentication {
+        .login {
+            width: 32%;
+        }
+    }
+}
