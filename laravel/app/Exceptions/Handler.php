@@ -29,21 +29,4 @@ class Handler extends ExceptionHandler
             //
         });
     }
-
-    public function render($request, Throwable $exception)
-    {
-        if ($exception instanceof ModelNotFoundException) {
-            return response()->json([
-                'error' => 'Something Went Wrong'
-            ], 404);
-        }
-
-        if ($exception instanceof NotFoundHttpException) {
-            return response()->json([
-                'error' => 'Not Found. Please check the URL and try again.'
-            ], 404);
-        }
-
-        return parent::render($request, $exception);
-    }
 }
