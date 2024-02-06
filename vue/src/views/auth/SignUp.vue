@@ -65,20 +65,19 @@ const signup = async () => {
         })
 
         // Check if the response status is successful (2xx)
-        if (response.status >= 200 && response.status < 300) {
-            // Handle the response from the server
-            // console.log('Signup successful:', response.data)
+        if (response.data) {
+            // Display a success message to the user
             alertMessage.value = 'Signup Successful. You can now login.'
 
-            // Redirect to home page on successful login
+            // Redirect to the login page
             router.push({ name: 'login' })
         } else {
-            console.error('Invalid response status:', response.status)
+            // Handle other cases, such as server errors
+            console.error('Invalid response:', response)
         }
     } catch (error) {
-        // Show an error message or handle login failure
-        // console.error('Signup failed:', error.response ? error.response.data : error.message)
-        errors.value = error.response ? error.response.data.errors : { general : ['An error occured during signup.'] }
+        // Show error messages to the user
+        errors.value = error.response ? error.response.data.errors : { general: ['An error occurred during signup.'] }
     }
 }
 </script>
