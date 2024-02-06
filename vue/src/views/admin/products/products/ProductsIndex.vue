@@ -1,6 +1,6 @@
 <script setup>
-import SideNav from '../../../../components/admin/SideNav.vue'
-import ProductsNav from '../../../../components/admin/ProductsNavbar.vue'
+import SideNav from '@/components/admin/SideNav.vue'
+import ProductsNav from '@/components/admin/ProductsNavbar.vue'
 </script>
 
 <template>

@@ -1,15 +1,3 @@
-<script setup>
-import SideNav from '../../../../components/admin/SideNav.vue'
-import ProductsNav from '../../../../components/admin/ProductsNavbar.vue'
-
-import useCategories from '../../../../composables/categories'
-import { onMounted } from 'vue'
-
-const { categories, getCategories, destroyCategory } = useCategories()
-
-onMounted(() => getCategories())
-</script>
-
 <template>
     <main class="Admin">
         <SideNav />
@@ -45,3 +33,15 @@ onMounted(() => getCategories())
         </section>
     </main>
 </template>
+
+<script setup>
+import SideNav from '@/components/admin/SideNav.vue'
+import ProductsNav from '@/components/admin/ProductsNavbar.vue'
+
+import useCategories from '@/composables/categories'
+import { onMounted } from 'vue'
+
+const { categories, getCategories, destroyCategory } = useCategories()
+
+onMounted(() => getCategories())
+</script>
