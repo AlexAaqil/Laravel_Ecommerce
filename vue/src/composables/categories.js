@@ -1,8 +1,6 @@
 import { ref } from 'vue'
-import axios from 'axios'
+import axios from '@/axios'
 import { useRouter } from 'vue-router'
-
-axios.defaults.baseURL = 'http://localhost:8000/api/'
 
 export default function useCategories() {
     const category = ref([])
@@ -11,18 +9,22 @@ export default function useCategories() {
     const router = useRouter()
 
     const getCategories = async () => {
-        const response = await axios.get('categories')
-        categories.value = response.data
+        try {
+            const response = await axios.get('/categories')
+            categories.value = response.data
+        } catch (error) {
+            console.error('Error fetching categories:', error)
+        }
     }
 
     const getCategory = async (id) => {
-        const response = await axios.get('categories/' + id)
+        const response = await axios.get('/categories/' + id)
         category.value = response.data
     }
 
     const storeCategory = async (data) => {
         try {
-            await axios.post('categories', data)
+            await axios.post('/categories', data)
             await router.push({ name: 'admin_categories' })
         } catch (error) {
             if (error.response.status === 422) {
@@ -35,7 +37,7 @@ export default function useCategories() {
 
     const updateCategory = async (id) => {
         try {
-            await axios.put('categories/' + id, category.value)
+            await axios.put('/categories/' + id, category.value)
             await router.push({ name: 'admin_categories' })
         } catch (error) {
             if (error.response.status === 422) {
@@ -48,7 +50,7 @@ export default function useCategories() {
         if(!window.confirm("Are you sure you want to delete this category?")) {
             return;
         }
-        await axios.delete('categories/' + id)
+        await axios.delete('/categories/' + id)
         await getCategories();
     }
 
