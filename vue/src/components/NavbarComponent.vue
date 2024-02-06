@@ -16,16 +16,23 @@
     </nav>
 </template>
 
-<script>
-import { mapState, mapActions } from 'vuex'
+<script setup>
+import {computed} from 'vue'
+import store from '@/store'
+import router from '@/router'
 
-export default {
-    computed: {
-        ...mapState(['isLoggedIn'])
-    },
+const isLoggedIn = computed(() => store.getters.isLoggedIn)
 
-    methods: {
-        ...mapActions(['logout'])
-    }
+const logout = () => {
+    store
+        .dispatch('logout')
+        .then(() => {
+            router.push({ name: 'login' })
+        })
+        .catch((error) => {
+            console.error('Logout error:', error)
+        })
 }
+
+defineExpose({ isLoggedIn, logout })
 </script>

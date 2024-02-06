@@ -1,42 +1,3 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-
-const sidebar = ref(null);
-const mainContent = ref(null);
-const toggle = ref(null);
-
-const sidebarWidth = "15%";
-const closedSidebarWidth = "5%";
-
-onMounted(() => {
-  // Access DOM elements after component is mounted
-  sidebar.value = document.querySelector(".sidenav");
-  mainContent.value = document.querySelector(".main_content");
-  toggle.value = document.querySelector(".toggle");
-
-  // Attach event listener to the toggle button
-  toggle.value.addEventListener("click", toggleSidebar);
-});
-
-const toggleSidebar = () => {
-  if (sidebar.value && mainContent.value) {
-    sidebar.value.classList.toggle("closed");
-
-    // Check if the "closed" class is present on the sidebar
-    const isClosed = sidebar.value.classList.contains("closed");
-
-    // Adjust widths based on the presence of the "closed" class
-    if (isClosed) {
-      sidebar.value.style.width = closedSidebarWidth;
-      mainContent.value.style.marginLeft = `calc(${closedSidebarWidth} + 1%)`;
-    } else {
-      sidebar.value.style.width = sidebarWidth;
-      mainContent.value.style.marginLeft = `calc(${sidebarWidth} + 1%)`;
-    }
-  }
-};
-</script>
-
 <template>
     <nav class="sidenav">
         <i class="fas fa-chevron-circle-right toggle"></i>
@@ -97,13 +58,65 @@ const toggleSidebar = () => {
                     </a>
                 </li>
                 <li>
-                    <form action="">
-                        <button type="submit">
-                            <i class="fas fa-sign-out-alt icons"></i>
-                        </button>
-                    </form>
+                    <button @click="logout">
+                        <i class="fas fa-sign-out-alt icons"></i>
+                    </button>
                 </li>
             </ul>
         </div>
     </nav>
 </template>
+
+<script setup>
+import router from '@/router'
+import store from '@/store'
+import { ref, onMounted } from 'vue'
+
+const sidebar = ref(null)
+const mainContent = ref(null)
+const toggle = ref(null)
+
+const sidebarWidth = '15%'
+const closedSidebarWidth = '5%'
+
+onMounted(() => {
+    // Access DOM elements after component is mounted
+    sidebar.value = document.querySelector('.sidenav')
+    mainContent.value = document.querySelector('.main_content')
+    toggle.value = document.querySelector('.toggle')
+
+    // Attach event listener to the toggle button
+    toggle.value.addEventListener('click', toggleSidebar)
+})
+
+const toggleSidebar = () => {
+    if (sidebar.value && mainContent.value) {
+        sidebar.value.classList.toggle('closed')
+
+        // Check if the "closed" class is present on the sidebar
+        const isClosed = sidebar.value.classList.contains('closed')
+
+        // Adjust widths based on the presence of the "closed" class
+        if (isClosed) {
+            sidebar.value.style.width = closedSidebarWidth
+            mainContent.value.style.marginLeft = `calc(${closedSidebarWidth} + 1%)`
+        } else {
+            sidebar.value.style.width = sidebarWidth
+            mainContent.value.style.marginLeft = `calc(${sidebarWidth} + 1%)`
+        }
+    }
+}
+
+const logout = () => {
+    // Dispatch the 'logout' action from the store
+    store
+        .dispatch('logout')
+        .then(() => {
+            // Redirect to the login page or any other desired page
+            router.push({ name: 'login' })
+        })
+        .catch((error) => {
+            console.error('Logout error:', error)
+        })
+}
+</script>

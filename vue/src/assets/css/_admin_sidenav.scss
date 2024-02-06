@@ -43,16 +43,14 @@
             gap: 1em;
         }
 
-        form {
-            button {
-                border: none;
-                background: none;
-                width: 100%;
+        button {
+            border: none;
+            background: none;
+            width: 100%;
 
-                i {
-                    color: red;
-                    font-size: 1.8em;
-                }
+            i {
+                color: red;
+                font-size: 1.8em;
             }
         }
     }
