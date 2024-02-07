@@ -7,7 +7,7 @@
                 <div class="text">
                     <h1>ECommerce Shop</h1>
                     <p>One step online shop</p>
-                    <p>Hi {{ user.first_name }} {{ user.last_name }}!</p>
+                    <p v-if="user">Hi {{ user.first_name }} {{ user.last_name }}!</p>
                 </div>
                 <div class="image">
                     <img src="../assets/images/hero.jpg" alt="Hero Image" />
@@ -36,12 +36,16 @@ import Navbar from '../components/NavbarComponent.vue'
 import Product from '../components/ProductPartial.vue'
 import Footer from '../components/FooterComponent.vue'
 
-import {ref, onMounted} from 'vue'
-import axios from '@/axios'
+import { ref, onMounted } from 'vue'
+import store from '@/store/'
 
-const user = ref('')
-onMounted(async() => {
-    const response = await axios.get('api/user')
-    user.value = response.data
+const user = ref({})
+
+onMounted(async () => {
+  await store.dispatch('getUser')
+  const userData = store.getters.user
+  if (userData) {
+    user.value = userData
+  }
 })
 </script>
