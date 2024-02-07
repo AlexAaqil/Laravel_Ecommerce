@@ -6,16 +6,20 @@
             </h1>
 
             <form @submit.prevent="login">
-                <div v-if="errorMessage" class="alert_error">{{ errorMessage }}</div>
-
                 <div class="input_group">
                     <label for="email">Email</label>
                     <input type="email" v-model="form.email" name="email" id="email" />
+                    <span v-if="errors.email" class="inline_alert">{{
+                        errors.email[0]
+                    }}</span>
                 </div>
 
                 <div class="input_group">
                     <label for="password">Password</label>
                     <input type="password" v-model="form.password" name="password" id="password" />
+                    <span v-if="errors.password" class="inline_alert">{{
+                        errors.password[0]
+                    }}</span>
                 </div>
 
                 <button type="submit">Login</button>
@@ -31,7 +35,7 @@ import { ref } from 'vue'
 import axios from '@/axios'
 import router from '@/router'
 
-const errorMessage = ref('')
+const errors = ref('')
 
 const form = ref({
     email: '',
@@ -44,7 +48,7 @@ const login = async () => {
         await axios.post('/login', form.value)
         router.push({ name: 'home' })
     } catch (error) {
-        errorMessage.value = error.response.data.message || 'An error occurred.'
+        errors.value = error.response.data.errors
     }
 }
 
