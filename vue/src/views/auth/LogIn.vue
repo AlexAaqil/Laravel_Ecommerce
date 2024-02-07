@@ -22,6 +22,10 @@
                     }}</span>
                 </div>
 
+                <p>
+                    <router-link :to="{name: 'forgot_password'}">Forgot Password</router-link>
+                </p>
+
                 <button type="submit">Login</button>
             </form>
 

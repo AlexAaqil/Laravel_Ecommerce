@@ -24,5 +24,14 @@
         .login {
             width: 32%;
         }
+
+        .passwords {
+            align-self: start;
+            margin: 4em;
+
+            p {
+                margin: 0 0 1em;
+            }
+        }
     }
 }
