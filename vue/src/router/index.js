@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import store from '@/store'
+// import store from '@/store'
 import HomeView from '../views/HomeView.vue'
 
 const routes = [
@@ -42,7 +42,7 @@ const routes = [
     {
         path: '/admin',
         name: 'admin',
-        meta: { requiresAuth: true },
+        meta: { requiresAdmin: true },
         // component: () => import('@/views/admin/AdminDashboard.vue'),
         children: [
             {
@@ -78,6 +78,12 @@ const routes = [
         name: '404',
         meta: { public: true },
         component: () => import('@/views/404Page.vue')
+    },
+    {
+        path: '/unauthorized',
+        name: '401',
+        meta: { public: true },
+        component: () => import('@/views/401Page.vue')
     }
 ]
 
@@ -86,12 +92,16 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth && !store.state.token) {
-        next({ name: 'login' })
-    } else {
-        next()
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     const isAuthenticated = store.state.token
+
+//     if ((to.meta.requiresAuth || to.meta.requiresAdmin) && !isAuthenticated) {
+//         next({ name: 'login' })
+//     } else if (to.meta.requiresAdmin && isAuthenticated && !store.getters.isAdmin) {
+//         next({ name: '401' })
+//     } else {
+//         next()
+//     }
+// })
 
 export default router

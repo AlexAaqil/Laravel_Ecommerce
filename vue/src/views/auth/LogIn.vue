@@ -1,4 +1,3 @@
-<!-- LoginView.vue -->
 <template>
     <section class="Authentication">
         <div class="custom_form login">
@@ -11,12 +10,12 @@
 
                 <div class="input_group">
                     <label for="email">Email</label>
-                    <input type="email" v-model="user.email" name="email" id="email" />
+                    <input type="email" v-model="form.email" name="email" id="email" />
                 </div>
 
                 <div class="input_group">
                     <label for="password">Password</label>
-                    <input type="password" v-model="user.password" name="password" id="password" />
+                    <input type="password" v-model="form.password" name="password" id="password" />
                 </div>
 
                 <button type="submit">Login</button>
@@ -29,24 +28,24 @@
 
 <script setup>
 import { ref } from 'vue'
-import store from '@/store'
+import axios from '@/axios'
 import router from '@/router'
 
 const errorMessage = ref('')
-const user = {
+
+const form = ref({
     email: '',
     password: ''
+})
+
+const login = async () => {
+    try {
+        await axios.get('/sanctum/csrf-cookie')
+        await axios.post('/login', form.value)
+        router.push({ name: 'home' })
+    } catch (error) {
+        errorMessage.value = error.response.data.message || 'An error occurred.'
+    }
 }
 
-function login() {
-    store
-        .dispatch('login', user)
-        .then(() => {
-            router.push({ name: 'shop' })
-        })
-        .catch((error) => {
-            console.log(error)
-            errorMessage.value = error.response.data.message
-        })
-}
 </script>
