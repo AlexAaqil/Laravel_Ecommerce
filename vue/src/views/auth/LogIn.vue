@@ -48,7 +48,6 @@ const form = ref({
 
 const login = async () => {
     try {
-        await axios.get('/sanctum/csrf-cookie')
         await axios.post('/login', form.value)
         router.push({ name: 'home' })
     } catch (error) {

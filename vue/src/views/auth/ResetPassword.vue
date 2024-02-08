@@ -9,7 +9,7 @@
 
             <form>
                 <div class="input_group">
-                    <label for="password">Password</label>
+                    <label for="password">New Password</label>
                     <input type="password" v-model="form.password" name="password" id="password" />
                     <!-- <span v-if="errors.password" class="inline_alert">{{
                         errors.password[0]
