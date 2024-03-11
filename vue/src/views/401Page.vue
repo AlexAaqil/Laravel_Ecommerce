@@ -1,4 +1,0 @@
-<template>
-    <h1>401</h1>
-    <p>Unauthorized.</p>
-</template>
